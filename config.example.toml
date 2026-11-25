@@ -1,0 +1,22 @@
+# Copy to ~/.config/lougger/config.toml (or pass --config). One [[source]] per OpenSearch Dashboards.
+# Passwords are never stored here. password_env names the environment variable that holds the password.
+
+[[source]]
+name = "dev"                      # what the agent passes as `source`
+url = "http://127.0.0.1:5601/"    # OpenSearch Dashboards base URL
+user = "admin"
+password_env = "LOUGGER_DEV_PASSWORD"
+
+# Optional settings, shown with their defaults
+# tenant = "global"               # global | private
+# timeout_ms = 30000
+# allow_self_signed = false       # true turns off TLS certificate checks for this source
+# time_field = "@timestamp"       # date field used for time ranges and ordering
+
+# Where to find each part of a log line. Every list replaces the default for that field,
+# and the first name present in a document wins. Dots match nested objects and flattened keys.
+# [source.fields]
+# trace_id = ["trace.id", "trace_id", "traceId", "mdc.traceId"]
+# namespace = ["kubernetes.namespace_name", "kubernetes.namespace", "k8s.namespace.name"]
+# app = ["service.name", "kubernetes.labels.app_kubernetes_io/name", "kubernetes.labels.app", "kubernetes.container_name"]
+# pod, level, message, span_id, parent_span_id work the same way
